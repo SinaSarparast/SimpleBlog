@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109432194-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-109432194-1');
+  </script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  {% load static %}
+  <link rel="stylesheet" href="{% static "visaforyou/bootstrap/css/bootstrap.css" %}">
+  {% load static %}
+  <link rel="stylesheet" href="{% static "articles/css/style.css" %}" />
+  <title>visaforyou</title>
+
+</head>
+
+<!-- Header -->
+{% include './navbar.html'%}
+
+<body>
+  <div class="container">
+
+    {% block article %}
+    {% endblock %}
+  </div>
+</body>
+
+<!-- Footer -->
+<footer class="page-footer font-small bg-dark">
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3 ">© 2020 Copyright:
+        <a href="http://visaforyou.gigfa.com"> visaforyou.gigfa.com</a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
+<!-- Bootstrap core JavaScript -->
+<script src="{% static "visaforyou/jquery/jquery.slim.min.js" %}"></script>
+<script src="{% static "visaforyou/bootstrap/js/bootstrap.bundle.min.js" %}"></script>
+
+</html>

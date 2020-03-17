@@ -1,0 +1,25 @@
+* {
+ font-family: 'Nassim'
+}
+
+p, ul, li {
+    direction: rtl;
+    text-align: justify;
+    text-justify: inter-word;
+    vertical-align: middle;
+    font-size: 16pt;
+}
+
+h1, h2, h3, h4, h5, h6{
+    direction: rtl;
+    text-align: right;
+}
+
+.date {
+    text-align: left
+}
+
+@font-face {
+    font-family: "Nassim";
+    src: url('../assets/BBCNassimRegular.ttf') format('truetype');
+}
