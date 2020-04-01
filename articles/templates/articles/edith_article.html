@@ -1,0 +1,47 @@
+{% extends "articles/base.html" %}
+<script>
+  new FroalaEditor('div#froala-editor', {
+    heightMin: 100,
+    heightMax: 200
+  })
+</script>
+<!-- Page Content -->
+{% block article %}
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <div class="post_header">
+                <h1 class="mt-5">
+                  {% block title%}
+                      some title
+                  {% endblock %}
+                </h1>
+                <div class="date">
+                  date goes here
+                  {% block date %}
+                  {% endblock %}
+                </div>
+            </div>
+            <hr>
+              {% block summary%}
+              {% endblock %}
+            <hr>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure eveniet distinctio ducimus error tempore autem beatae pariatur qui quam minima. Veniam libero fugiat, totam, et quidem magni repellat consequuntur rerum.</p>
+              {% block article_body%}
+              {% endblock %}
+
+        {{ form.media }}
+        <form action="./edith_article" method="post">
+          {% csrf_token %}
+          {{form.as_p}}
+          <!-- <label for="get_name">Your name: </label>
+          <input id="title" type="text" name="get_name" value="{{ title }}" maxlength="30" required>
+          <input id="summary" type="text" name="get_name" value="{{ summary }}" maxlength="400" required>
+          <input id="rating" type="text" name="get_name" value="{{ current_name }}" maxlength="1" required>
+          <input type="text" name="get_name" value="{{ tags }}"> -->
+          <input type="submit" value="OK">
+        </form>
+
+        </div>
+    </div>
+
+{% endblock %}
