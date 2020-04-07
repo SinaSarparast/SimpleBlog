@@ -1,14 +1,16 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.translation import ugettext_lazy as _
 
 class Tag(models.Model):
     name = models.CharField(max_length=25)
 
 class Post(models.Model):
-    title = models.CharField(max_length=30)
+    slug = models.SlugField(_('slug'), max_length=255, unique=True)
+    title = models.CharField(max_length=255)
     summary = models.CharField(max_length=400)
     author = User()
-    rating = models.IntegerField(null=True)
+    rating = models.IntegerField(null=True,blank=True)
     lastmodiefied_date = models.DateField(auto_now=True)
-    tags = models.ManyToManyField(Tag,null=True)
+    tags = models.ManyToManyField(Tag,null=True,blank=True)
     content = models.TextField()
