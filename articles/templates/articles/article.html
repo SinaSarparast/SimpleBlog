@@ -7,22 +7,25 @@
             <div class="post_header">
                 <h1 class="mt-5">
                   {% block title%}
-                      some title
+                  {{title}}
                   {% endblock %}
                 </h1>
                 <div class="date">
-                  date goes here
-                  {% block date %}
+                  {% block lastmodiefied_date %}
+                  {{lastmodiefied_date}}
                   {% endblock %}
                 </div>
             </div>
             <hr>
               {% block summary%}
+              {{summary}}
               {% endblock %}
             <hr>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure eveniet distinctio ducimus error tempore autem beatae pariatur qui quam minima. Veniam libero fugiat, totam, et quidem magni repellat consequuntur rerum.</p>
-              {% block article_body%}
+            <p>
+              {% block content%}
+              {{content}}
               {% endblock %}
+            </p>
 
         </div>
     </div>
