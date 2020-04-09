@@ -10,7 +10,22 @@ class Post(models.Model):
     title = models.CharField(max_length=255)
     summary = models.CharField(max_length=400)
     author = User()
+    category = models.ForeignKey(
+        'Category',
+        on_delete   =  models.SET_NULL,
+        blank   =   True,
+        null    =   True
+    )
     rating = models.IntegerField(null=True,blank=True)
     lastmodiefied_date = models.DateField(auto_now=True)
     tags = models.ManyToManyField(Tag,null=True,blank=True)
     content = models.TextField()
+
+class Category(models.Model):
+    subcategory = models.ForeignKey(
+        'Category',
+        on_delete   =  models.SET_NULL,
+        blank   =   True,
+        null    =   True
+    )
+    name = models.CharField(max_length=255)
