@@ -4,9 +4,16 @@ from django.utils.translation import ugettext_lazy as _
 
 class Tag(models.Model):
     name = models.CharField(max_length=25)
+    def __str__(self):
+       return self.name
 
 class Post(models.Model):
-    slug = models.SlugField(_('slug'), max_length=255, unique=True)
+
+    # Not possible to use the SlugField. It does not accept unicode characters in
+    # django admin page so I had to change it to CharField
+    # slug = models.SlugField(_('slug'), max_length=255, unique=True)
+    
+    slug = models.CharField(max_length=255,unique=True)
     title = models.CharField(max_length=255)
     summary = models.CharField(max_length=400)
     author = User()
@@ -25,6 +32,8 @@ class Post(models.Model):
         null    =   True
     )
     content = models.TextField()
+    def __str__(self):
+       return self.title
 
 class Category(models.Model):
     subcategory = models.ForeignKey(
@@ -34,3 +43,5 @@ class Category(models.Model):
         null    =   True
     )
     name = models.CharField(max_length=255)
+    def __str__(self):
+       return self.name
