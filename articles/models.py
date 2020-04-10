@@ -18,7 +18,12 @@ class Post(models.Model):
     )
     rating = models.IntegerField(null=True,blank=True)
     lastmodiefied_date = models.DateField(auto_now=True)
-    tags = models.ManyToManyField(Tag,null=True,blank=True)
+    tags = models.ForeignKey(
+        'Tag',
+        on_delete   =  models.SET_NULL,
+        blank   =   True,
+        null    =   True
+    )
     content = models.TextField()
 
 class Category(models.Model):
