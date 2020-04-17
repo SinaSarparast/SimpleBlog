@@ -3,11 +3,26 @@ from django.http import HttpResponse
 from django.views import generic
 from django.http import HttpResponseRedirect
 from .forms import NameForm
-from .models import Post, Tag
+from .models import Post, Tag, Category
 from django.utils.text import slugify
+
+# import pdb; pdb.set_trace()
 
 def index(request):
     return HttpResponse("Hello, world. You're at the articles index.")
+
+def show_nav(request):
+    categories = Category.objects.all()
+
+    dic = dict()
+    for category in categories:
+        item = {
+            'category'  :   category.name,
+            'posts'     :   's'
+        }
+        dic[category.name] = Post.objects.filter(category=category).only("title")
+    print(dic)
+    return render(request,  'articles/navbar.html', {'categories':dic})
 
 def show_article(request, slug=None):
     # return HttpResponse("official translation!")
