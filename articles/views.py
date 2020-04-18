@@ -11,19 +11,6 @@ from django.utils.text import slugify
 def index(request):
     return HttpResponse("Hello, world. You're at the articles index.")
 
-def show_nav(request):
-    categories = Category.objects.all()
-
-    dic = dict()
-    for category in categories:
-        item = {
-            'category'  :   category.name,
-            'posts'     :   's'
-        }
-        dic[category.name] = Post.objects.filter(category=category).only("title")
-    print(dic)
-    return render(request,  'articles/navbar.html', {'categories':dic})
-
 def show_article(request, slug=None):
     # return HttpResponse("official translation!")
     if slug is not None:
