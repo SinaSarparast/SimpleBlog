@@ -26,9 +26,9 @@ class Post(models.Model):
     # django admin page so I had to change it to CharField
     # slug = models.SlugField(_('slug'), max_length=255, unique=True)
 
-    slug    =   models.CharField(max_length=255,unique=True)
-    title   =   models.CharField(max_length=255)
-    summary =   models.CharField(max_length=400, help_text='summary of article')
+    slug    =   models.CharField(max_length=500,unique=True)
+    title   =   models.CharField(max_length=500)
+    summary =   models.CharField(max_length=2200, help_text='summary of article')
     author  =   models.ForeignKey(
         'ArticleAuthor',
         on_delete   =   models.SET_NULL,
@@ -62,4 +62,3 @@ class Category(models.Model):
     name = models.CharField(max_length=255)
     def __str__(self):
        return self.name
-    

@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.http import HttpResponse
 from django.views import generic
 from django.http import HttpResponseRedirect
-from .forms import NameForm, AuthorForm
+from .forms import NameForm, ArticleForm
 from .models import Post, Tag, Category, ArticleAuthor
 from django.utils.text import slugify
 from django.views.decorators.http import require_http_methods
@@ -16,13 +16,14 @@ def index(request):
 def create_article(request):
     if request.method == "Get":
         # form = NameForm()
-        form = NameForm()
+        form = ArticleForm()
     else:
         # create a form instance and populate it with data from the request:
-        form = NameForm(request.POST)
+        form = ArticleForm(request.POST)
         # check whether it's valid:
         if form.is_valid():
             # process the data in form.cleaned_data as required
+            article =   form.save(commit=False)
             try:
                 author = ArticleAuthor.objects.get(user = request.user)
             except ArticleAuthor.DoesNotExist:
@@ -30,18 +31,22 @@ def create_article(request):
                 author.user = request.user
                 author.full_clean()
 
-            try:
-                article =   Post()
-                article.title   =   form.cleaned_data['title']
-                article.slug    =   slugify(article.title,allow_unicode=True)
-                article.author  =   author
-                article.summary =   form.cleaned_data['summary']
-                article.content =   form.cleaned_data['content']
-                article.full_clean()
-                article.save()
-            except ValidationError as e:
-                # here you can check the type, etc of the error
-                raise Http404(e)
+            article.author  =   author
+            article.slug    =   slugify(article.title)
+            article.save()
+
+            # try:
+            #     article =   Post()
+            #     article.title   =   form.cleaned_data['title']
+            #     article.slug    =   slugify(article.title,allow_unicode=True)
+            #     article.author  =   author
+            #     article.summary =   form.cleaned_data['summary']
+            #     article.content =   form.cleaned_data['content']
+            #     article.full_clean()
+            #     article.save()
+            # except ValidationError as e:
+            #     # here you can check the type, etc of the error
+            #     raise Http404(e)
     return render(request, 'articles/edith_article.html', {'form': form})
 
 
@@ -63,13 +68,8 @@ def read_article(request, slug):
 def update_article(request, slug = None):
     if request.method == "GET":
         try:
-            article = Post.objects.get(slug = slug)
-            initial = {
-                'title'     :   article.title,
-                'summary'   :   article.summary,
-                'content'   :   article.content
-            }
-            form = NameForm(initial)
+            article = Post.objects.filter(slug = slug).values()
+            form = ArticleForm(article.first())
         except Post.DoesNotExist:
             raise Http404("No MyModel matches the given query.")
         # return reverse(edith_article,args=["hello-world"])
@@ -78,7 +78,7 @@ def update_article(request, slug = None):
 
     if request.method == "POST":
         if slug is None:
-            form = NameForm(request.POST)
+            form = article(request.POST)
             slug = slugify(request.POST['title'])
 
         if form.is_valid():
