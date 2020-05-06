@@ -24,7 +24,7 @@ class ArticleForm(ModelForm):
     content =   forms.CharField(
         widget  =   FroalaEditor,
         label   =   'متن'
-    )
+        )
     category=   forms.ModelChoiceField(
         queryset =   Category.objects.all(),
         label   =   'دسته'

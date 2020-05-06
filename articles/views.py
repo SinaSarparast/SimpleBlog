@@ -13,41 +13,47 @@ def index(request):
     return HttpResponse("Hello, world. You're at the articles index.")
 
 
-def create_article(request):
-    if request.method == "Get":
-        # form = NameForm()
-        form = ArticleForm()
-    else:
-        # create a form instance and populate it with data from the request:
-        form = ArticleForm(request.POST)
-        # check whether it's valid:
-        if form.is_valid():
-            # process the data in form.cleaned_data as required
-            article =   form.save(commit=False)
-            try:
-                author = ArticleAuthor.objects.get(user = request.user)
-            except ArticleAuthor.DoesNotExist:
-                author = ArticleAuthor()
-                author.user = request.user
-                author.full_clean()
+# def create_article(request):
+#     if request.method == "Get":
+#         # form = NameForm()
+#         form = ArticleForm()
+#     else:
+#         # create a form instance and populate it with data from the request:
+#         form = ArticleForm(request.POST)
+#         # check whether it's valid:
+#         if form.is_valid():
+#             # process the data in form.cleaned_data as required
+#             article =   form.save(commit=False)
+#             try:
+#                 author = ArticleAuthor.objects.get(user = request.user)
+#             except ArticleAuthor.DoesNotExist:
+#                 author = ArticleAuthor()
+#                 author.user = request.user
+#                 author.full_clean()
+#
+#             article.author  =   author
+#             article.slug    =   slugify(article.title)
+#             article.save()
+#
+#     return render(request, 'articles/edith_article.html', {'form': form})
 
-            article.author  =   author
-            article.slug    =   slugify(article.title)
-            article.save()
+from django.views.generic.edit import CreateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-            # try:
-            #     article =   Post()
-            #     article.title   =   form.cleaned_data['title']
-            #     article.slug    =   slugify(article.title,allow_unicode=True)
-            #     article.author  =   author
-            #     article.summary =   form.cleaned_data['summary']
-            #     article.content =   form.cleaned_data['content']
-            #     article.full_clean()
-            #     article.save()
-            # except ValidationError as e:
-            #     # here you can check the type, etc of the error
-            #     raise Http404(e)
-    return render(request, 'articles/edith_article.html', {'form': form})
+
+#LoginRequiredMixin is required for user authentication
+class ArticleCreate(LoginRequiredMixin,CreateView):
+    template_name = 'articles/article_form.html'
+    model = Post
+    # fields = ['title','summary','content']
+    form_class = ArticleForm
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        article   =   form.save(commit=False)
+        article.slug = slugify(article.title)
+        article.full_clean()
+        return super().form_valid(form)
 
 
 def read_article(request, slug):
@@ -65,8 +71,11 @@ def read_article(request, slug):
         raise Http404("Article does not exist!")
 
 
-def update_article(request, slug = None):
+def update_article(request, slug):
     if request.method == "GET":
+        print("******************")
+        print("Get is executed")
+        print("******************")
         try:
             article = Post.objects.filter(slug = slug).values()
             form = ArticleForm(article.first())
@@ -77,31 +86,51 @@ def update_article(request, slug = None):
 
 
     if request.method == "POST":
-        if slug is None:
-            form = article(request.POST)
-            slug = slugify(request.POST['title'])
+        print("******************")
+        print("POST is executed")
+        print("******************")
 
+        # if slug is None:
+        #     form = article(request.POST)
+        #     slug = slugify(request.POST['title'])
+        form = ArticleForm(request.POST)
         if form.is_valid():
+            article =   form.save(commit=False)
             try:
-                print(slug)
-                article     =   Post.objects.filter(slug = slug).update(
-                    title   =   form.cleaned_data['title'],
-                    slug    =   slugify(form.cleaned_data['title'],allow_unicode=True),
-                    # author  =   request.user,
-                    summary =   form.cleaned_data['summary'],
-                    content =   form.cleaned_data['content']
-                    # ,tag     =   form.cleaned_data['tags']
-                    )
-                print("record updated")
-            except Post.DoesNotExist:
-                #you have to place dberror here this is just a place holder
-                # here you can check the type, etc of the error
-                # messages.error(request, "Database Error ...blah blah %s" % str(dberr))
-                raise Http404("No post matches the given query.")
+                author = ArticleAuthor.objects.get(user = request.user)
+            except ArticleAuthor.DoesNotExist:
+                author = ArticleAuthor()
+                author.user = request.user
+                author.full_clean()
+
+            article.author  =   author
+            article.slug    =   slugify(article.title)
+            article.save()
+
+            return HttpResponse("Operation successful!")
+            # try:
+            #     print(slug)
+            #     article     =   Post.objects.filter(slug = slug).update(
+            #         title   =   form.cleaned_data['title'],
+            #         slug    =   slugify(form.cleaned_data['title'],allow_unicode=True),
+            #         # author  =   request.user,
+            #         summary =   form.cleaned_data['summary'],
+            #         content =   form.cleaned_data['content']
+            #         # ,tag     =   form.cleaned_data['tags']
+            #         )
+            #     print("record updated")
+            # except Post.DoesNotExist:
+            #     #you have to place dberror here this is just a place holder
+            #     # here you can check the type, etc of the error
+            #     # messages.error(request, "Database Error ...blah blah %s" % str(dberr))
+            #     raise Http404("No post matches the given query.")
 
         # print('reverse')
         # return render(request, 'articles/edith_article.html', {'form': form})
     # return reverse(edith_article,args=["hello-world"])
+    print("******************")
+    print("Post is not executed")
+    print("******************")
     return render(request, 'articles/edith_article.html', {'form': form})
 
 

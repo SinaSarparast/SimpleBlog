@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
+from django.urls import reverse
 
 class Tag(models.Model):
     name = models.CharField(max_length=25,blank = True,null = True)
@@ -21,7 +22,6 @@ class ArticleAuthor(models.Model):
 
 
 class Post(models.Model):
-
     # Not possible to use the SlugField. It does not accept unicode characters in
     # django admin page so I had to change it to CharField
     # slug = models.SlugField(_('slug'), max_length=255, unique=True)
@@ -30,7 +30,7 @@ class Post(models.Model):
     title   =   models.CharField(max_length=500)
     summary =   models.CharField(max_length=2200, help_text='summary of article')
     author  =   models.ForeignKey(
-        'ArticleAuthor',
+        User,
         on_delete   =   models.SET_NULL,
         null    =   True
         )
@@ -48,8 +48,14 @@ class Post(models.Model):
     #     null    =   True
     # )
     content = models.TextField()
+
     def __str__(self):
        return self.title
+
+    def get_absolute_url(self):
+        return reverse('read_article',kwargs={'slug': self.slug})
+
+
 
 
 class Category(models.Model):
