@@ -56,19 +56,26 @@ class ArticleCreate(LoginRequiredMixin,CreateView):
         return super().form_valid(form)
 
 
-def read_article(request, slug):
-    try:
-        article = get_object_or_404(Post, slug=slug)
-        data_to_send = {
-            'title'     :   article.title,
-            'summary'   :   article.summary,
-            'lastmodiefied_date'    :   article.lastmodiefied_date,
-            'content'   :   article.content,
-            'author'    :   article.author
-        }
-        return render(request,  'articles/article.html', data_to_send)
-    except Post.DoesNotExist:
-        raise Http404("Article does not exist!")
+class ReadView(generic.DetailView):
+    """
+    Generic class-based detail view for a blog.
+    """
+    template_name = 'articles/article.html'
+    model = Post
+
+# def read_article(request, slug):
+#     try:
+#         article = get_object_or_404(Post, slug=slug)
+#         data_to_send = {
+#             'title'     :   article.title,
+#             'summary'   :   article.summary,
+#             'lastmodiefied_date'    :   article.lastmodiefied_date,
+#             'content'   :   article.content,
+#             'author'    :   article.author
+#         }
+#         return render(request,  'articles/article.html', data_to_send)
+#     except Post.DoesNotExist:
+#         raise Http404("Article does not exist!")
 
 
 def update_article(request, slug):

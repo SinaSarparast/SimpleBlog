@@ -6,7 +6,8 @@ urlpatterns = [
     path('',    views.index, name='index'),
     path('add/', views.ArticleCreate.as_view(), name='article-add'),
     # path('create_article/',    views.create_article, name='create_article'),
-    path('read_article/<str:slug>',     views.read_article, name='read_article'),
+    # path('read_article/<str:slug>',     views.read_article, name='read_article'),
+    path('read/<str:slug>',     views.ReadView.as_view(), name='read_article'),
     path('update_article/<str:slug>',    views.update_article, name='update_article'),
     path('delete_article/<str:slug>',    views.delete_article, name='delete_article')
 

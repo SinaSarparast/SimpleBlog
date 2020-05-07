@@ -7,18 +7,18 @@
             <div class="post_header">
                 <h1 class="mt-5">
                   {% block title%}
-                  {{title}}
+                  {{post.title}}
                   {% endblock %}
                 </h1>
                 <div class="date">
                   {% block lastmodiefied_date %}
-                  {{lastmodiefied_date}}
+                  {{post.lastmodiefied_date}}
                   {% endblock %}
                 </div>
             </div>
             <hr>
               {% block summary%}
-              {{summary}}
+              {{post.summary}}
               {% endblock %}
             <hr>
 
@@ -26,9 +26,9 @@
             <!-- this is a filter which avoids filtering safe HTML. Without the filte
             text appears inside a string we want it to be rendered as HTML
             https://docs.djangoproject.com/en/3.0/ref/templates/builtins/#safe -->
-            {{content|safe}}
+            {{post.content|safe}}
             {% endblock %}
-            
+
 
         </div>
     </div>
