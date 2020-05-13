@@ -13,15 +13,18 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
 
 
-def index(request):
-    return HttpResponse("Hello, world. You're at the articles index.")
+class ReadView(generic.DetailView):
+    """
+    Generic class-based detail view for a blog.
+    """
+    template_name = 'articles/article.html'
+    model = Post
 
 
 #LoginRequiredMixin is required for user authentication
-class ArticleCreate(LoginRequiredMixin,CreateView):
+class AddView(LoginRequiredMixin,CreateView):
     template_name = 'articles/article_form.html'
     model = Post
-    # fields = ['title','summary','content']
     form_class = ArticleForm
 
     def form_valid(self, form):
@@ -32,24 +35,14 @@ class ArticleCreate(LoginRequiredMixin,CreateView):
         return super().form_valid(form)
 
 
-class ReadView(generic.DetailView):
-    """
-    Generic class-based detail view for a blog.
-    """
-    template_name = 'articles/article.html'
-    model = Post
-
-
-class Update(UpdateView):
+class UpdateView(LoginRequiredMixin,UpdateView):
     model   =   Post
     template_name   =   'articles/article_form.html'
     form_class  =   ArticleForm
 
 
-def delete_article(request, slug):
-    try:
-        article = Post.objects.get(id= 5)
-        article.delete()
-        return render("<h1>Successfully deleted!</h1>")
-    except Post.DoesNotExist:
-        raise Http404("No such a article found! Can not complete the delete operation.")
+class DeleteView(LoginRequiredMixin,DeleteView):
+    model   =   Post
+    template_name   =   'articles/article_form.html'
+    form_class  =   ArticleForm
+    # success_url = 'articles/article.html'
