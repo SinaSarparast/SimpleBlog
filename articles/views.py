@@ -30,7 +30,10 @@ class AddView(LoginRequiredMixin,CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         article   =   form.save(commit=False)
-        article.slug = slugify(article.title)
+
+        article.slug = slugify(article.title,allow_unicode=True)
+        print(20*"*")
+        print(article.slug)
         article.full_clean()
         return super().form_valid(form)
 
