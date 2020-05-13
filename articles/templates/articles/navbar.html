@@ -18,9 +18,10 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     {% for post in posts %}
                     <!-- See URL Dispatcher Django docs!!! -->
+
                         <a class="dropdown-item" href={% url 'read_article' post.slug%}>
                           {{post.title}}
-                          </a>
+                        </a>
                     {% endfor %}
                     </div>
                   </li>

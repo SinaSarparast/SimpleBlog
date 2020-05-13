@@ -26,7 +26,7 @@ class Post(models.Model):
     # django admin page so I had to change it to CharField
     # slug = models.SlugField(_('slug'), max_length=255, unique=True)
 
-    slug    =   models.CharField(max_length=500,unique=True)
+    slug    =   models.CharField(max_length=500,unique=True,primary_key=True)
     title   =   models.CharField(max_length=500)
     summary =   models.CharField(max_length=2200, help_text='summary of article')
     author  =   models.ForeignKey(
@@ -49,13 +49,11 @@ class Post(models.Model):
     # )
     content = models.TextField()
 
+    def get_absolute_url(self):
+        return reverse('read_article',kwargs={'slug': self.pk})
+
     def __str__(self):
        return self.title
-
-    def get_absolute_url(self):
-        return reverse('read_article',kwargs={'slug': self.slug})
-
-
 
 
 class Category(models.Model):
