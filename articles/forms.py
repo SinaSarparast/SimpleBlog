@@ -3,6 +3,9 @@ from froala_editor.widgets import FroalaEditor
 from .models import Tag, Category, Post
 from django.forms import ModelForm
 from django.utils.translation import gettext_lazy as _
+from ckeditor.fields import RichTextField
+from ckeditor.widgets import CKEditorWidget
+
 
 # # class NameForm(forms.Form): (difference between form.form and modelform)
 # Forms created from forms.Form are manually configured by you. You're better off
@@ -16,8 +19,8 @@ from django.utils.translation import gettext_lazy as _
 
 class ArticleForm(ModelForm):
     content =   forms.CharField(
-        widget  =   FroalaEditor,
-        label   =   'متن'
+        widget  = CKEditorWidget(config_name='awesome_ckeditor')
+        # label   =   'متن'
         )
     title =   forms.CharField(
         label   =   'عنوان',
