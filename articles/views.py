@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.http import HttpResponse
 from django.views import generic
 from django.http import HttpResponseRedirect
-from .forms import NameForm, ArticleForm
+from .forms import ArticleForm
 from .models import Post, Tag, Category, ArticleAuthor
 from django.utils.text import slugify
 from django.views.decorators.http import require_http_methods
