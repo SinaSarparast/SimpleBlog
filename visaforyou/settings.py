@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'froala_editor',
     'ckeditor',
-    # 'ckeditor_uploader',
+    'ckeditor_uploader',
     'articles'
 ]
 
@@ -68,7 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'articles.context_processors.navbar',
+                # 'articles.context_processors.navbar',
             ],
         },
     },
@@ -129,3 +129,25 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+
+
+MEDIA_URL = "media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+# Upload path for CKeditor's file upload app
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+CKEDITOR_CONFIGS = {
+    # 'awesome_ckeditor': {
+    #     'toolbar': 'Basic',
+    # },
+    'default': {
+        'toolbar': 'full',
+        'height': 300,
+        'width' : '100%'
+    },
+    'extraPlugins' : {
+            'uploadimage'
+            }
+}

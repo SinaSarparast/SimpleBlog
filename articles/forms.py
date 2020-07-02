@@ -1,11 +1,11 @@
 from django import forms
 from froala_editor.widgets import FroalaEditor
-from .models import Tag, Category, Post
+from .models import Tag, Post
 from django.forms import ModelForm
 from django.utils.translation import gettext_lazy as _
 from ckeditor.fields import RichTextField
 from ckeditor.widgets import CKEditorWidget
-
+from ckeditor_uploader.fields import RichTextUploadingField
 
 # # class NameForm(forms.Form): (difference between form.form and modelform)
 # Forms created from forms.Form are manually configured by you. You're better off
@@ -19,16 +19,13 @@ from ckeditor.widgets import CKEditorWidget
 
 class ArticleForm(ModelForm):
     content =   forms.CharField(
-        widget  = CKEditorWidget(config_name='awesome_ckeditor')
+        widget  = CKEditorWidget(config_name='default')
         # label   =   'متن'
         )
+    # content = RichTextUploadingField()
     title =   forms.CharField(
         label   =   'عنوان',
         initial =   _('Article\'s Title')
-        )
-    category=   forms.ModelChoiceField(
-        queryset =   Category.objects.all(),
-        label   =   'دسته'
         )
     summary=   forms.CharField(
         widget=forms.Textarea(attrs={'class' : 'article_summary'}),
@@ -39,12 +36,11 @@ class ArticleForm(ModelForm):
         model = Post
         # fields = '__all__'
 
-        fields = ['title','summary','category','content']
+        fields = ['title','summary','content']
         labels = {
             'summary': 'خلاصه'
         }
         help_texts = {
-            'category': 'دسته مقاله',
             'content': 'متن مقاله'
         }
         error_messages = {

@@ -34,12 +34,12 @@ class Post(models.Model):
         on_delete   =   models.SET_NULL,
         null    =   True
         )
-    category    =   models.ForeignKey(
-        'Category',
-        on_delete   =  models.SET_NULL,
-        blank   =   True,
-        null    =   True
-        )
+    # category    =   models.ForeignKey(
+    #     'Category',
+    #     on_delete   =  models.SET_NULL,
+    #     blank   =   True,
+    #     null    =   True
+    #     )
     lastmodiefied_date = models.DateField(auto_now=True)
     # tag = models.ForeignKey(
     #     'Tag',
