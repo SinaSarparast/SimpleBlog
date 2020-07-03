@@ -5,6 +5,7 @@ from django.forms import ModelForm
 from django.utils.translation import gettext_lazy as _
 from ckeditor.fields import RichTextField
 from ckeditor.widgets import CKEditorWidget
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from ckeditor_uploader.fields import RichTextUploadingField
 
 # # class NameForm(forms.Form): (difference between form.form and modelform)
@@ -19,7 +20,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 
 class ArticleForm(ModelForm):
     content =   forms.CharField(
-        widget  = CKEditorWidget(config_name='default')
+        widget  = CKEditorUploadingWidget(config_name='default')
         # label   =   'متن'
         )
     # content = RichTextUploadingField()

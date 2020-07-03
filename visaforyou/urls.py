@@ -17,9 +17,26 @@ from django.contrib import admin
 from django.urls import path, include
 from froala_editor import views
 from django.conf.urls.static import static
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('articles/', include('articles.urls')),
     path('admin/', admin.site.urls),
     path(r'^ckeditor/', include('ckeditor_uploader.urls'))
-]
+    ]
+
+# serving media files only on debug mode
+# see: https://docs.djangoproject.com/en/3.1/ref/urls/#django.conf.urls.static.static
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# Other way of serving media files in debug mode
+# see: https://docs.djangoproject.com/en/3.1/ref/views/#serving-files-in-development
+# from django.views.static import serve
+# if settings.DEBUG:
+#     urlpatterns += [
+#         path(r'^media/(?P<path>.*)$', serve,
+#             {'document_root': settings.MEDIA_ROOT}
+#             )]
