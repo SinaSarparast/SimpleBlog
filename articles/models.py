@@ -28,7 +28,6 @@ class Post(models.Model):
 
     slug    =   models.CharField(max_length=500,unique=True,primary_key=True)
     title   =   models.CharField(max_length=500)
-    summary =   models.CharField(max_length=2200)
     author  =   models.ForeignKey(
         User,
         on_delete   =   models.SET_NULL,

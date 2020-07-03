@@ -28,16 +28,11 @@ class ArticleForm(ModelForm):
         label   =   'عنوان',
         initial =   _('Article\'s Title')
         )
-    summary=   forms.CharField(
-        widget=forms.Textarea(attrs={'class' : 'article_summary'}),
-        label   =   'خلاصه',
-        initial =   _('Initial headline')
-        )
     class Meta:
         model = Post
         # fields = '__all__'
 
-        fields = ['title','summary','content']
+        fields = ['title','content']
         labels = {
             'summary': 'خلاصه'
         }
