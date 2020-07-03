@@ -143,9 +143,12 @@ CKEDITOR_CONFIGS = {
     #     'toolbar': 'Basic',
     # },
     'default': {
+        'skin': 'moono',
         'toolbar': 'full',
-        'height': 300,
-        'width' : '100%'
+        'height': 500,
+        'width' : '100%',
+        'margin': 0,
+        'style': 'inline'
     },
     'extraPlugins' : {
             'uploadimage'

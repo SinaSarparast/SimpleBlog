@@ -26,27 +26,30 @@
 
 </head>
 
-<!-- Header -->
-{% include './navbar.html'%}
+<div class="container">
+  <body>
 
-<body>
-  <div class="container">
-    {% block article %}
-    {% endblock %}
-  </div>
-</body>
+      <!-- Header -->
+      {% include './navbar.html'%}
 
-<!-- Footer -->
-<footer class="page-footer font-small bg-dark">
+      {% block article %}
+      {% endblock %}
 
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3 ">© 2020 Copyright:
-        <a href="http://visaforyou.gigfa.com"> visaforyou.gigfa.com</a>
-    </div>
-    <!-- Copyright -->
+  </body>
 
-</footer>
-<!-- Footer -->
+  <!-- Footer -->
+  <footer class="page-footer fixed-bottom font-small bg-light ">
+
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-3 ">© 2020 Copyright:
+          <a href="http://visaforyou.gigfa.com"> visaforyou.gigfa.com</a>
+      </div>
+      <!-- Copyright -->
+
+  </footer>
+  <!-- Footer -->
+
+</div>
 
 <!-- Bootstrap core JavaScript -->
 <script src="{% static "visaforyou/jquery/jquery.slim.min.js" %}"></script>
