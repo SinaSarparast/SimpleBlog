@@ -26,30 +26,19 @@
 
 </head>
 
-<div class="container">
-  <body>
+<body>
 
-      <!-- Header -->
-      {% include './navbar.html'%}
+  <!-- Header -->
+  {% include './navbar.html'%}
 
-      {% block article %}
-      {% endblock %}
-
-  </body>
+  <!-- article body -->
+  {% block article %}
+  {% endblock %}
 
   <!-- Footer -->
-  <footer class="page-footer fixed-bottom font-small bg-light ">
+  {%include './footer.html'%}
 
-      <!-- Copyright -->
-      <div class="footer-copyright text-center py-3 ">© 2020 Copyright:
-          <a href="http://visaforyou.gigfa.com"> visaforyou.gigfa.com</a>
-      </div>
-      <!-- Copyright -->
-
-  </footer>
-  <!-- Footer -->
-
-</div>
+</body>
 
 <!-- Bootstrap core JavaScript -->
 <script src="{% static "visaforyou/jquery/jquery.slim.min.js" %}"></script>

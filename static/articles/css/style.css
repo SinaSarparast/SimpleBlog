@@ -49,6 +49,22 @@ label[for='id_title'],[for='id_summary'] {
   visibility: hidden;
 }
 
+
+a>img {
+  width: 30px;
+  height: 30px;
+  margin: 10px;
+}
+
+.btn-circle {
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+}
+
+
+
 @font-face {
     font-family: "Nassim";
     src: url('../assets/BBCNassimRegular.ttf') format('truetype');
