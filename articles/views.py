@@ -11,7 +11,16 @@ from django.core.exceptions import ValidationError
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
+from django.views.generic.list import ListView
 
+class ArticleListView(ListView):
+    template_name = 'articles/home.html'
+    model = Post
+    paginate_by = 10  # if pagination is desired
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
 
 class ReadView(generic.DetailView):
     """
