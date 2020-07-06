@@ -11,12 +11,22 @@
         <img src="..." alt="..." class="rounded-circle" width="40px">
       </div>
 
-      <a class="navbar-brand" href="#">sina</a>
+
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          User name
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href={% url "article-add" %}>New Post</a>
+          <a class="dropdown-item" href="#">Preferences</a>
+          <a class="dropdown-item" href="#">Logout</a>
+        </div>
+      </div>
 
       <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item active">
-            <a class="nav-link" href="#">خانه <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href={% url "article-list" %}>Home<span class="sr-only">(current)</span></a>
           </li>
         </ul>
 
