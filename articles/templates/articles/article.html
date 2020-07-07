@@ -9,7 +9,7 @@
         {{post.title}}
       </h1>
       <div class="date">
-          <span> {{post.lastmodiefied_date}} در {{post.author}}   نوشته شده توسط</span>
+          <span> Written by {{post.author}} in {{post.lastmodiefied_date}}  </span>
       </div>
       <hr>
   </div>
@@ -24,4 +24,6 @@
   {% endblock %}
 
 </div>
+<!-- Footer -->
+{%include './footer.html'%}
 {% endblock %}

@@ -4,38 +4,26 @@
 
 <div class="container">
     {% for post in object_list %}
-    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-2 mt-2 shadow-sm h-md-250 position-relative">
-      <div class="col p-4 d-flex flex-column position-static">
-          <h1 class="mb-0">{{post.title}}</h1>
-
-
+    <div class="row" id="blog_entry">
+      <div class="col">
+            <h1 id="blog_title">{{post.title}}</h1>
             <div class="date mb-1 text-muted">
-                <span> {{post.lastmodiefied_date}} در {{post.author}}   نوشته شده توسط</span>
+                <span> written by {{post.author}} in {{post.lastmodiefied_date}}</span>
             </div>
-            <p class="card-text mb-auto">
+            <hr>
+            <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
               Quam sit, esse atque harum praesentium ab, sunt molestias itaque
                quaerat obcaecati commodi aliquid voluptate corrupti?
                 Eius quisquam voluptate corrupti nobis et.
-               <a href="#" class="stretched-link">Continue reading</a>
+                <a href={% url "read_article" post.slug %}>Continue reading</a>
             </p>
-
         </div>
-
-        <div class="col-auto d-none d-lg-block">
-          <svg class="bd-placeholder-img" width="200" height="150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
-            <title>Placeholder</title>
-            <rect width="100%" height="100%" fill="#55595c">
-
-            </rect>
-            <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-          </svg>
-        </div>
-
     </div>
     {% endfor %}
 </div>
 
 
-
+<!-- Footer -->
+{%include './footer.html'%}
 {% endblock %}

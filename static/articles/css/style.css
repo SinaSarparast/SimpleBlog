@@ -1,28 +1,24 @@
-* {
- font-family: 'Nassim'
+#blog_entry{
+  padding-top:  50px;
+  padding-bottom: 50px;
+
+}
+
+.date, #blog_title{
+  text-align: left;
 }
 
 p, ul, li {
-    direction: rtl;
     text-align: justify;
     text-justify: inter-word;
-    vertical-align: middle;
+    /* vertical-align: middle; */
     font-size: 16pt;
 }
 
-h1, h2, h3, h4, h5, h6{
-    direction: rtl;
-    text-align: right;
-}
-
-.date {
-    text-align: left
-}
 
 #id_summary
 {
   font-size: 16pt;
-
 	background: transparent;
 	border: none;
   border-top:    2px solid grey;
@@ -37,7 +33,6 @@ h1, h2, h3, h4, h5, h6{
 #id_title
 {
   font-size: 2em;
-
 	background: transparent;
 	border: none;
 	width: 100%;
@@ -65,7 +60,7 @@ a>img {
 
 
 
-@font-face {
+/* @font-face {
     font-family: "Nassim";
     src: url('../assets/BBCNassimRegular.ttf') format('truetype');
-}
+} */

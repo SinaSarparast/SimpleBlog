@@ -27,17 +27,16 @@
 </head>
 
 <body>
+  <div class="main">
+    <!-- Header -->
+    {% include './navbar.html'%}
 
-  <!-- Header -->
-  {% include './navbar.html'%}
+    <!-- article body -->
+    {% block article %}
+    {% endblock %}
 
-  <!-- article body -->
-  {% block article %}
-  {% endblock %}
-
-  <!-- Footer -->
-  {%include './footer.html'%}
-
+    
+  </div>
 </body>
 
 <!-- Bootstrap core JavaScript -->
