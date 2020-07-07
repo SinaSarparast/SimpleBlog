@@ -154,3 +154,5 @@ CKEDITOR_CONFIGS = {
             'uploadimage'
             }
 }
+
+LOGIN_REDIRECT_URL = 'article-list'

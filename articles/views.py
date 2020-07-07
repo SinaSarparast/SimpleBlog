@@ -12,6 +12,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
 from django.views.generic.list import ListView
+from django.contrib.auth.forms import AuthenticationForm
 
 class ArticleListView(ListView):
     template_name = 'articles/home.html'
