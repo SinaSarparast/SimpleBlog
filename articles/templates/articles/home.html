@@ -12,10 +12,7 @@
             </div>
             <hr>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Quam sit, esse atque harum praesentium ab, sunt molestias itaque
-               quaerat obcaecati commodi aliquid voluptate corrupti?
-                Eius quisquam voluptate corrupti nobis et.
+              {{post.content| safe | slice:":255"}}
                 <a href={% url "read_article" post.slug %}>Continue reading</a>
             </p>
         </div>
