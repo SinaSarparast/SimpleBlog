@@ -156,3 +156,4 @@ CKEDITOR_CONFIGS = {
 }
 
 LOGIN_REDIRECT_URL = 'article-list'
+LOGOUT_REDIRECT_URL = 'article-list'
