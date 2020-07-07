@@ -13,6 +13,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import View
 from django.views.generic.list import ListView
 from django.contrib.auth.forms import AuthenticationForm
+from django.urls import reverse_lazy
 
 class ArticleListView(ListView):
     template_name = 'articles/home.html'
@@ -48,7 +49,7 @@ class AddView(LoginRequiredMixin,CreateView):
         return super().form_valid(form)
 
 
-class UpdateView(LoginRequiredMixin,UpdateView):
+class EdithView(LoginRequiredMixin,UpdateView):
     model   =   Post
     template_name   =   'articles/article_form.html'
     form_class  =   ArticleForm
@@ -58,4 +59,4 @@ class DeleteView(LoginRequiredMixin,DeleteView):
     model   =   Post
     template_name   =   'articles/article_form.html'
     form_class  =   ArticleForm
-    # success_url = 'articles/article.html'
+    success_url = reverse_lazy('article-list')
