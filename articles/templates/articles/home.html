@@ -27,10 +27,8 @@
 
         </div>
         <hr>
-        <p>
-          {{post.content| safe | slice:":255"}}
-            <a href={% url "read_article" post.slug %}>Continue reading</a>
-        </p>
+        <p>{{post.content| safe | slice:":255"}} </p>
+          <a href={% url "read_article" post.slug %}>Continue reading</a>
       </div>
     </div>
     {% endfor %}

@@ -1,5 +1,4 @@
 from django import forms
-from froala_editor.widgets import FroalaEditor
 from .models import Tag, Post
 from django.forms import ModelForm
 from django.utils.translation import gettext_lazy as _

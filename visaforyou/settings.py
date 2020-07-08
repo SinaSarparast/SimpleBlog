@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'froala_editor',
     'ckeditor',
     'ckeditor_uploader',
     'articles'
