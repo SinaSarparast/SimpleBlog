@@ -1,25 +1,66 @@
-* {
- font-family: 'Nassim'
+#blog_entry{
+  padding-top:  50px;
+  padding-bottom: 50px;
+
+}
+
+.date, #blog_title{
+  text-align: left;
 }
 
 p, ul, li {
-    direction: rtl;
     text-align: justify;
     text-justify: inter-word;
-    vertical-align: middle;
+    /* vertical-align: middle; */
     font-size: 16pt;
 }
 
-h1, h2, h3, h4, h5, h6{
-    direction: rtl;
-    text-align: right;
+
+#id_summary
+{
+  font-size: 16pt;
+	background: transparent;
+	border: none;
+  border-top:    2px solid grey;
+	border-bottom: 2px solid grey;
+	width: 100%;
+  height: 200px;
+	outline: none;
+	padding: 0px 0px 0px 0px;
+	font-style: italic;
 }
 
-.date {
-    text-align: left
+#id_title
+{
+  font-size: 2em;
+	background: transparent;
+	border: none;
+	width: 100%;
+	outline: none;
+	padding: 0px 0px 0px 0px;
 }
 
-@font-face {
+label[for='id_title'],[for='id_summary'] {
+  visibility: hidden;
+}
+
+
+a>img {
+  width: 30px;
+  height: 30px;
+  margin: 10px;
+}
+
+.btn-circle {
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+}
+
+
+
+/* @font-face {
     font-family: "Nassim";
     src: url('../assets/BBCNassimRegular.ttf') format('truetype');
-}
+} */

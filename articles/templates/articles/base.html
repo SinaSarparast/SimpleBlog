@@ -19,37 +19,28 @@
   <meta name="author" content="">
 
   {% load static %}
-  <link rel="stylesheet" href="{% static "visaforyou/bootstrap/css/bootstrap.css" %}">
+  <link rel="stylesheet" href="{% static "SimpleBlog/bootstrap/css/bootstrap.css" %}">
   {% load static %}
   <link rel="stylesheet" href="{% static "articles/css/style.css" %}" />
-  <title>visaforyou</title>
+  <title>SimpleBlog</title>
 
 </head>
 
-<!-- Header -->
-{% include './navbar.html'%}
-
 <body>
-  <div class="container">
+  <div class="main">
+    <!-- Header -->
+    {% include './navbar.html'%}
+
+    <!-- article body -->
     {% block article %}
     {% endblock %}
+
+
   </div>
 </body>
 
-<!-- Footer -->
-<footer class="page-footer font-small bg-dark">
-
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3 ">© 2020 Copyright:
-        <a href="http://visaforyou.gigfa.com"> visaforyou.gigfa.com</a>
-    </div>
-    <!-- Copyright -->
-
-</footer>
-<!-- Footer -->
-
 <!-- Bootstrap core JavaScript -->
-<script src="{% static "visaforyou/jquery/jquery.slim.min.js" %}"></script>
-<script src="{% static "visaforyou/bootstrap/js/bootstrap.bundle.min.js" %}"></script>
+<script src="{% static "SimpleBlog/jquery/jquery.slim.min.js" %}"></script>
+<script src="{% static "SimpleBlog/bootstrap/js/bootstrap.bundle.min.js" %}"></script>
 
 </html>
