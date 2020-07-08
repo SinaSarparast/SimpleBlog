@@ -24,7 +24,7 @@ class ArticleForm(ModelForm):
         )
     # content = RichTextUploadingField()
     title =   forms.CharField(
-        label   =   'عنوان',
+        label   =   'Title',
         initial =   _('Article\'s Title')
         )
     class Meta:
@@ -33,10 +33,10 @@ class ArticleForm(ModelForm):
 
         fields = ['title','content']
         labels = {
-            'summary': 'خلاصه'
+            'summary': 'summary'
         }
         help_texts = {
-            'content': 'متن مقاله'
+            'content': 'content'
         }
         error_messages = {
             'NON_FIELD_ERRORS': {
