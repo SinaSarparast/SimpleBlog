@@ -21,41 +21,29 @@ class NameForm(forms.Form):
     #     empty_label=None
     # )
     # tags    =   models.CharField(max_length=3, choices=LOCATIONS)
+    # # class NameForm(forms.Form): (difference between form.form and modelform)
+    # Forms created from forms.Form are manually configured by you. You're better off
+    # using these for forms that do not directly interact with models. For example
+    # a contact form, or a newsletter subscription form, where you might
+    # not necessarily be interacting with the database. Where as a form created from
+    # forms.ModelForm will be automatically created and then can later be
+    # tweaked by you. The best examples really are from the superb documentation
+    # provided on the Django website.
 
-# # class NameForm(forms.Form): (difference between form.form and modelform)
-# Forms created from forms.Form are manually configured by you. You're better off
-# using these for forms that do not directly interact with models. For example
-# a contact form, or a newsletter subscription form, where you might
-# not necessarily be interacting with the database. Where as a form created from
-# forms.ModelForm will be automatically created and then can later be
-# tweaked by you. The best examples really are from the superb documentation
-# provided on the Django website.
 
 class ArticleForm(ModelForm):
-    content =   forms.CharField( 
+    content =   forms.CharField(
         widget  =   FroalaEditor,
         label   =   'content'
         )
     category=   forms.ModelChoiceField(
         queryset =   Category.objects.all(),
-        label   =   'category',
-        widget  = CKEditorUploadingWidget(config_name='default')
-        )
-    # content = RichTextUploadingField()
-    title =   forms.CharField(
-        label   =   'Title',
-        initial =   _('Article\'s Title')
+        label   =   'category'
         )
     class Meta:
         model = Post
         # fields = '__all__'
         fields = ['title','content']
-        labels = {
-            'summary': 'summary'
-        }
-        help_texts = {
-            'content': 'content'
-        }
         error_messages = {
             'NON_FIELD_ERRORS': {
                 'unique_together': "%(model_name)s's %(field_labels)s are not unique."
