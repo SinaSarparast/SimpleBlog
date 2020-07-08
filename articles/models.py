@@ -28,18 +28,17 @@ class Post(models.Model):
 
     slug    =   models.CharField(max_length=500,unique=True,primary_key=True)
     title   =   models.CharField(max_length=500)
-    summary =   models.CharField(max_length=2200, help_text='summary of article')
     author  =   models.ForeignKey(
         User,
         on_delete   =   models.SET_NULL,
         null    =   True
         )
-    category    =   models.ForeignKey(
-        'Category',
-        on_delete   =  models.SET_NULL,
-        blank   =   True,
-        null    =   True
-        )
+    # category    =   models.ForeignKey(
+    #     'Category',
+    #     on_delete   =  models.SET_NULL,
+    #     blank   =   True,
+    #     null    =   True
+    #     )
     lastmodiefied_date = models.DateField(auto_now=True)
     # tag = models.ForeignKey(
     #     'Tag',

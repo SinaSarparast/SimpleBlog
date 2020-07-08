@@ -1,36 +1,29 @@
 {% extends "articles/base.html" %}
+{% block article %}
 
 <!-- Page Content -->
-{% block article %}
-    <div class="row">
-        <div class="col-lg-12 text-center">
-            <div class="post_header">
-                <h1 class="mt-5">
-                  {% block title%}
-                  {{post.title}}
-                  {% endblock %}
-                </h1>
-                <div class="date">
-                  {% block lastmodiefied_date %}
-                  {{post.lastmodiefied_date}}
-                  {% endblock %}
-                </div>
-            </div>
-            <hr>
-              {% block summary%}
-              {{post.summary}}
-              {% endblock %}
-            <hr>
+<div class="container">
 
-            {% block content%}
-            <!-- this is a filter which avoids filtering safe HTML. Without the filte
-            text appears inside a string we want it to be rendered as HTML
-            https://docs.djangoproject.com/en/3.0/ref/templates/builtins/#safe -->
-            {{post.content|safe}}
-            {% endblock %}
+  <div class="post_header">
+      <h1 class="mt-5">
+        {{post.title}}
+      </h1>
+      <div class="date">
+          <span> Written by {{post.author}} in {{post.lastmodiefied_date}}  </span>
+      </div>
+      <hr>
+  </div>
 
 
-        </div>
-    </div>
 
+  {% block content%}
+  <!-- this is a filter which avoids filtering safe HTML. Without the filte
+  text appears inside a string we want it to be rendered as HTML
+  https://docs.djangoproject.com/en/3.0/ref/templates/builtins/#safe -->
+  {{post.content|safe}}
+  {% endblock %}
+
+</div>
+<!-- Footer -->
+{%include './footer.html'%}
 {% endblock %}

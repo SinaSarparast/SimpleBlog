@@ -1,0 +1,90 @@
+{% load static %}
+<link rel="stylesheet" href="{% static "SimpleBlog/bootstrap/css/bootstrap.css" %}">
+{% load static %}
+<link rel="stylesheet" href="{% static "articles/css/style.css" %}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% block footer %}
+
+<!-- Footer -->
+<footer class="page-footer  bg-light" >
+
+  <!-- Footer Links -->
+  <div class="container">
+
+    <!-- Grid row-->
+    <div class="row text-center justify-content-center mb-4">
+
+      <!-- Grid column -->
+      <div class="col-md-8 mt-5">
+        <p style="line-height: 1.7rem">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          Cumque fuga dolorem aspernatur quos aperiam sunt, eligendi,
+          quo cupiditate perferendis minus voluptates a!
+          Eos unde est quasi, doloribus error cum necessitatibus?
+        </p>
+      </div>
+      <!-- Grid column -->
+
+    </div>
+
+
+    <!-- Grid row-->
+    <div class="row text-center justify-content-center">
+
+      <!-- Grid column -->
+      <div class="col-md-6">
+
+        <div class="mb-2 flex-center">
+          <!-- Facebook -->
+          <a class="social_icons">
+            <img src="{% static "articles/assets/icons/facebook.svg" %}" alt="facebook">
+          </a>
+          <!-- Instagram -->
+          <a class="social_icons">
+            <img src="{% static "articles/assets/icons/instagram.svg" %}" alt="instagram">
+          </a>
+          <!-- Twitter -->
+          <a class="social_icons">
+            <img src="{% static "articles/assets/icons/twitter.svg" %}" alt="twitter">
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Grid column -->
+      <div class="col-md-6 "">
+        <div class="flex-center">
+          <form class="form-inline">
+            <input type="text" class="form-control-sm w-50" placeholder="Your email"
+              aria-label="Your email" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <button class="btn btn-circle btn-dark mx-2" type="button">Subscribe</button>
+            </div>
+          </form>
+        </div>
+    </div>
+      <!-- Grid column -->
+
+
+    <!-- Grid row-->
+
+
+<!-- Copyright -->
+  <div class="row">
+    <div class="container">
+      <div class="footer-copyright text-center py-3">© 2020 Copyright:
+        <a href="#"> MyBlog.me</a>
+      </div>
+    </div>
+  </div>
+<!-- Copyright -->
+
+</div>
+
+</footer>
+<!-- Footer -->
+
+
+
+<!-- Footer -->
+{% endblock %}

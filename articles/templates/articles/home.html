@@ -1,0 +1,40 @@
+{% extends "articles/base.html" %}
+
+{% block article %}
+
+<div class="container">
+    {% for post in object_list %}
+    <div class="row" id="blog_entry">
+      <div class="col">
+        <div class="row">
+
+          <div class="col">
+            <h1 id="blog_title">{{post.title}}</h1>
+            <div class="date mb-1 text-muted">
+                <span> written by {{post.author}} in {{post.lastmodiefied_date}}</span>
+            </div>
+          </div>
+
+          {% if user.is_authenticated %}
+          <div class="col">
+              <a href={% url 'edith_article' post.slug %}>
+                <button type="button" class="btn btn-warning">Edith</button></a>
+              <a href={% url 'delete_article' post.slug %}>
+                <button type="button" class="btn btn-danger">Delete</button></a>
+          </div>
+          {% endif %}
+
+
+        </div>
+        <hr>
+        <p>{{post.content| safe | slice:":255"}} </p>
+          <a href={% url "read_article" post.slug %}>Continue reading</a>
+      </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+<!-- Footer -->
+{%include './footer.html'%}
+{% endblock %}
