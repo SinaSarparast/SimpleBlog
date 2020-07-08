@@ -4,8 +4,7 @@ from .models import Tag, Category, Post
 from django.forms import ModelForm
 
 class NameForm(forms.Form):
-    title   =   forms.CharField(label='عنوان مقاله', max_length=30)
-    summary =   forms.CharField(label='چکیده مقاله', max_length=400)
+    title   =   forms.CharField(label='title', max_length=30)
     category=   forms.ModelChoiceField(
         queryset    =   Category.objects.all())
     content =   forms.CharField(widget=FroalaEditor)
@@ -23,27 +22,17 @@ class NameForm(forms.Form):
 class ArticleForm(ModelForm):
     content =   forms.CharField(
         widget  =   FroalaEditor,
-        label   =   'متن'
+        label   =   'content'
         )
     category=   forms.ModelChoiceField(
         queryset =   Category.objects.all(),
-        label   =   'دسته'
+        label   =   'category'
         )
     class Meta:
         model = Post
         # fields = '__all__'
 
         fields = ['title','summary','category','content']
-        labels = {
-            'title': 'عنوان',
-            'summary': 'خلاصه'
-        }
-        help_texts = {
-            'title': 'عنوان مقاله',
-            'summary': 'خلاصه مقاله',
-            'category': 'دسته مقاله',
-            'content': 'متن مقاله',
-        }
         error_messages = {
             'NON_FIELD_ERRORS': {
                 'unique_together': "%(model_name)s's %(field_labels)s are not unique."
