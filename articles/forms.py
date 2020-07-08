@@ -49,7 +49,7 @@ class ArticleForm(ModelForm):
         )
     # content = RichTextUploadingField()
     title =   forms.CharField(
-        label   =   'عنوان',
+        label   =   'Title',
         initial =   _('Article\'s Title')
 >>>>>>> 04734b924d6bf86514447a6be59bb3f0387b342f
         )
@@ -62,10 +62,10 @@ class ArticleForm(ModelForm):
 =======
         fields = ['title','content']
         labels = {
-            'summary': 'خلاصه'
+            'summary': 'summary'
         }
         help_texts = {
-            'content': 'متن مقاله'
+            'content': 'content'
         }
 >>>>>>> 04734b924d6bf86514447a6be59bb3f0387b342f
         error_messages = {
