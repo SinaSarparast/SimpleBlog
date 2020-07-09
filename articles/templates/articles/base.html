@@ -4,7 +4,8 @@
 <head>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109432194-1"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109432194-1">
+  </script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -22,6 +23,11 @@
   <link rel="stylesheet" href="{% static "SimpleBlog/bootstrap/css/bootstrap.css" %}">
   {% load static %}
   <link rel="stylesheet" href="{% static "articles/css/style.css" %}" />
+
+  <link rel="text/javascript" href="{% static "/SimpleBlog/ckeditor/ckeditor.js" %}" />
+
+
+
   <title>SimpleBlog</title>
 
 </head>
@@ -42,5 +48,8 @@
 <!-- Bootstrap core JavaScript -->
 <script src="{% static "SimpleBlog/jquery/jquery.slim.min.js" %}"></script>
 <script src="{% static "SimpleBlog/bootstrap/js/bootstrap.bundle.min.js" %}"></script>
+<script src="{% static "/SimpleBlog/ckeditor/ckeditor.js" %}" />
+  CKEDITOR.replaceAll( 'richtexteditor' );
+</script>
 
 </html>
