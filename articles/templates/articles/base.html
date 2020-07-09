@@ -23,10 +23,7 @@
   <link rel="stylesheet" href="{% static "SimpleBlog/bootstrap/css/bootstrap.css" %}">
   {% load static %}
   <link rel="stylesheet" href="{% static "articles/css/style.css" %}" />
-
-  <link rel="text/javascript" href="{% static "/SimpleBlog/ckeditor/ckeditor.js" %}" />
-
-
+  <script src="{% static "/SimpleBlog/ckeditor/ckeditor.js" %}" /></script>
 
   <title>SimpleBlog</title>
 
@@ -45,11 +42,10 @@
   </div>
 </body>
 
+
 <!-- Bootstrap core JavaScript -->
 <script src="{% static "SimpleBlog/jquery/jquery.slim.min.js" %}"></script>
 <script src="{% static "SimpleBlog/bootstrap/js/bootstrap.bundle.min.js" %}"></script>
-<script src="{% static "/SimpleBlog/ckeditor/ckeditor.js" %}" />
-  CKEDITOR.replaceAll( 'richtexteditor' );
-</script>
+
 
 </html>

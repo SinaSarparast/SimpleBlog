@@ -24,7 +24,7 @@ class ArticleForm(ModelForm):
     #     )
     # content = RichTextUploadingField()
     content =   forms.CharField(widget =
-                forms.Textarea({'class':'richtexteditor'})
+                forms.Textarea({'class':'editor'})
                 )
     title =   forms.CharField(
         initial =   _('Article\'s Title')
