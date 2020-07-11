@@ -3,7 +3,7 @@
 <!-- Page Content -->
 {% block article %}
     <div class="container">
-        <div class="row">
+        <!-- <div class="row"> -->
 
         {{ form.media }}
         <form action="" method="post">
@@ -18,7 +18,10 @@
             <button type="submit" class="btn w-25 btn-success btn-block btn-lg">Submit</button>
           </div
         </form>
-        <script>CKEDITOR.replaceAll( 'editor' );</script>
+        <!-- <script>CKEDITOR.replaceAll( 'editor' );</script> -->
+        {% load static %}
+        <script>CKEDITOR.inline( 'content', {
+            customConfig: "{% static "/SimpleBlog/ckeditor/config.js" %}"} );</script>
 
         {% if form.errors %}
         {% for field in form %}
@@ -35,7 +38,7 @@
         {% endfor %}
         {% endif %}
 
-        </div>
+        <!-- </div> -->
     </div>
 
 
