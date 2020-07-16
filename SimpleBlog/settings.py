@@ -137,9 +137,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # Upload path for CKeditor's file upload app
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 
-<<<<<<< HEAD
-=======
-
->>>>>>> development
 LOGIN_REDIRECT_URL = 'article-list'
 LOGOUT_REDIRECT_URL = 'article-list'
