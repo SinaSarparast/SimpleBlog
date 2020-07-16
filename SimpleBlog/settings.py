@@ -137,22 +137,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # Upload path for CKeditor's file upload app
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 
-CKEDITOR_CONFIGS = {
-    # 'awesome_ckeditor': {
-    #     'toolbar': 'Basic',
-    # },
-    'default': {
-        'skin': 'moono',
-        'toolbar': 'full',
-        'height': 500,
-        'width' : '100%',
-        'margin': 0,
-        'style': 'inline'
-    },
-    'extraPlugins' : {
-            'uploadimage'
-            }
-}
 
 LOGIN_REDIRECT_URL = 'article-list'
 LOGOUT_REDIRECT_URL = 'article-list'
