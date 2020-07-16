@@ -4,7 +4,8 @@
 <head>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109432194-1"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109432194-1">
+  </script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -22,6 +23,8 @@
   <link rel="stylesheet" href="{% static "SimpleBlog/bootstrap/css/bootstrap.css" %}">
   {% load static %}
   <link rel="stylesheet" href="{% static "articles/css/style.css" %}" />
+  <script src="{% static "/SimpleBlog/ckeditor/ckeditor.js" %}" /></script>
+
   <title>SimpleBlog</title>
 
 </head>
@@ -39,8 +42,10 @@
   </div>
 </body>
 
+
 <!-- Bootstrap core JavaScript -->
 <script src="{% static "SimpleBlog/jquery/jquery.slim.min.js" %}"></script>
 <script src="{% static "SimpleBlog/bootstrap/js/bootstrap.bundle.min.js" %}"></script>
+
 
 </html>

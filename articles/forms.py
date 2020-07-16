@@ -18,11 +18,14 @@ from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class ArticleForm(ModelForm):
-    content =   forms.CharField(
-        widget  = CKEditorUploadingWidget(config_name='default')
-        # label   =   'متن'
-        )
+    # content =   forms.CharField(
+    #     widget  = CKEditorUploadingWidget(config_name='default')
+    #     # label   =   'متن'
+    #     )
     # content = RichTextUploadingField()
+    content =   forms.CharField(widget =
+                forms.Textarea({'class':'editor'})
+                )
     title =   forms.CharField(
         initial =   _('Article\'s Title')
         )
