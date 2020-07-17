@@ -1,15 +1,17 @@
 # SimpleBlog
 
-Hello, thank you for your interest in this project. SimpleBlog is a minimalist blog web application for people who want a simple platform to share their ideas, videos or pictures.
-I try to make this repository friendly for new contributors who are interested in developing their product. You are free to contribute to this project by working on
+Hello, thank you for your interest in this project. SimpleBlog is a minimalist blog for people who want a simple platform to share their ideas, videos or pictures.
+I try to keep this repository friendly for new contributors who are interested in contributing to open source projects. You are free to contribute to this project by working on
 issues or simply fork this repository and develop your product in any way you want.
 
-# Prerequisites
+# Getting Started
+
+## Prerequisites
 You should know the basics of Django and managing a Django project.
 Good knowledge of Python is also very helpful.
 You should be comfortable working with the command line environment.
 
-# How to set up the project
+## How to set up the project
 First, start by cloning this repository to your local machine.
 
 ```
