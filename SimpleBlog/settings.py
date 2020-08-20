@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ckeditor',
     'ckeditor_uploader',
-    'articles'
+    'articles',
+    'user'
 ]
 
 MIDDLEWARE = [
@@ -136,7 +137,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # Upload path for CKeditor's file upload app
 CKEDITOR_UPLOAD_PATH = 'uploads/'
-
 
 LOGIN_REDIRECT_URL = 'article-list'
 LOGOUT_REDIRECT_URL = 'article-list'

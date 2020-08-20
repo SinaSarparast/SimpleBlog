@@ -19,9 +19,9 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.conf.urls.static import static
 
-
 urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
+    path('profile', include('user.urls')),
     path('articles/', include('articles.urls')),
     path('admin/', admin.site.urls),
     path(r'^ckeditor/', include('ckeditor_uploader.urls'))
